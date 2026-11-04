@@ -6,6 +6,9 @@
 
 CAMERA_PATH := vendor/motorola/camera
 
+# Patch cameraserver for Moto HDR out-of-order shutter
+$(shell bash $(CAMERA_PATH)/patch_camera_hdr.sh >&2)
+
 # Soong Namespace
 PRODUCT_SOONG_NAMESPACES += \
     $(CAMERA_PATH)
