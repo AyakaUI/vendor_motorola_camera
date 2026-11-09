@@ -6,9 +6,6 @@
 
 CAMERA_PATH := vendor/motorola/camera
 
-# Patch cameraserver for Moto HDR out-of-order shutter
-$(shell bash $(CAMERA_PATH)/patch_camera_hdr.sh >&2)
-
 # Soong Namespace
 PRODUCT_SOONG_NAMESPACES += \
     $(CAMERA_PATH)
@@ -30,10 +27,10 @@ PRODUCT_COPY_FILES += \
 
 # Properties
 PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.expose.aux=1 \
-    persist.vendor.camera.physical.num=3 \
+    persist.vendor.camera.expose.aux?=1 \
+    persist.vendor.camera.physical.num?=3 \
     persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.motorola.camera3 \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
+    vendor.camera.aux.packagelist?=org.lineageos.aperture,org.codeaurora.snapcam,com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
     vendor.camera.aux.packagelist2=com.motorola.ccc,com.android.settings,com.motorola.motointelligence \
     ro.camera.cfa.packagelist=com.motorola.coresettingsext,com.motorola.camera2,com.motorola.camera3,com.motorola.actions \
     ro.vendor.camera.noiseVibratortime=180
